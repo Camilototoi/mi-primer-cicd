@@ -1,0 +1,28 @@
+# .github/workflows/ci.yml
+
+name: Pipeline CI — Laboratorio
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Paso 1 — Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Paso 2 — Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Paso 3 — Instalar dependencias
+        run: npm install
+
+      - name: Paso 4 — Correr los tests
+        run: npm test
