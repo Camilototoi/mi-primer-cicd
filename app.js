@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 3000;
 
 // Ruta principal
 app.get('/', (req, res) => {
-  res.send('Hola Mundo desde mi Pipeline CI/CD');
+  res.send('Hola Arquitectos — Pipeline CI/CD funcionando');
 });
 
 // Ruta que suma dos números de la URL
