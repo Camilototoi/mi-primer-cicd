@@ -2,15 +2,13 @@
 const express = require('express');
 const app = express();
 
-// Función de suma — esto es lo que vamos a testear
- function sumar(a, b) {
+// Función de suma — esto es lo que testeamos
+function sumar(a, b) {
   return a + b;
 }
 
-// DESPUÉS (roto — cambia solo esta línea):
-// function sumar(a, b) {
-//  return a * b;  // ← multiplicación en vez de suma 😈
-//}
+// Render asigna el puerto dinámicamente via variable de entorno
+const PORT = process.env.PORT || 3000;
 
 // Ruta principal
 app.get('/', (req, res) => {
@@ -23,5 +21,13 @@ app.get('/sumar/:a/:b', (req, res) => {
   res.json({ resultado });
 });
 
-// Exportamos la función para poder testearla
+// El servidor solo arranca si ejecutamos este archivo directamente
+// (no cuando Jest lo importa para testear)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Servidor corriendo en puerto ${PORT}`);
+  });
+}
+
+// Exportamos para los tests
 module.exports = { sumar, app };
