@@ -3,14 +3,14 @@ const express = require('express');
 const app = express();
 
 // Función de suma — esto es lo que vamos a testear
-// function sumar(a, b) {
-//  return a + b;
-//}
+ function sumar(a, b) {
+  return a + b;
+}
 
 // DESPUÉS (roto — cambia solo esta línea):
-function sumar(a, b) {
-  return a * b;  // ← multiplicación en vez de suma 😈
-}
+// function sumar(a, b) {
+//  return a * b;  // ← multiplicación en vez de suma 😈
+//}
 
 // Ruta principal
 app.get('/', (req, res) => {
